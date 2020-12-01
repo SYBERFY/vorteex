@@ -6,6 +6,7 @@ setup(
     author='Syberfy',
     description='CLI tool for Vorteex',
     packages=find_packages(),
+    scripts=['./scripts/vorteex'],
     install_requires=[
     ],
     python_requires='>=3.7',
