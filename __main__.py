@@ -1,3 +1,4 @@
+import sys
 import argparse
 
 from .commands import build_commands
@@ -13,8 +14,11 @@ def main():
     args = parser.parse_args()
     args_dict = vars(args)
 
-    if args.func:
-        args.func(args_dict)
+    if 'func' not in args:
+        parser.print_help()
+        sys.exit(0)
+
+    args.func(args_dict)
 
 
 if __name__ == '__main__':
