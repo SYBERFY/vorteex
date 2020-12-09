@@ -6,7 +6,7 @@ from .commands import build_commands
 
 def main():
     parser = argparse.ArgumentParser(description='Vorteex CLI tool')
-    parser.add_argument('--json', help='Output results in JSON')
+    parser.add_argument('--json', action='store_true', help='Output results in JSON')
 
     sub_parser_creator = parser.add_subparsers()
     build_commands(sub_parser_creator)

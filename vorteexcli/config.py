@@ -53,7 +53,7 @@ def get_vorteex_api_key():
     if 'settings' not in config:
         return
 
-    return config['settings'].get('api_key')
+    return dict(config['settings']).get('api_key')
 
 
 def get_all_sources():
@@ -65,4 +65,4 @@ def get_all_sources():
     if 'sources' not in config:
         return
 
-    return config.get('sources')
+    return dict(config['sources'])
