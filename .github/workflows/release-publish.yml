@@ -1,15 +1,27 @@
-# This workflows will upload a Python Package using Twine when a release is created
-# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
-
-name: Upload Python Package
+name: "Release and publish"
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "v*"
 
 jobs:
-  deploy:
+  tagged-release:
+    name: "Tagged Release"
+    runs-on: ubuntu-latest
 
+    steps:
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          files: |
+            LICENSE
+            scripts/
+            vorteex/
+
+  deploy:
+    name: "Publish to PyPi"
     runs-on: ubuntu-latest
 
     steps:
